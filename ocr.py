@@ -10,16 +10,32 @@ class Color(Enum):
     GREEN = (0, 0, 0)
 
 capture = cv2.VideoCapture(0)
-capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
-capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+capture.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+#capture.set(cv2.CAP_PROP_FOCUS, 21)
+capture.set(cv2.CAP_PROP_AUTOFOCUS, 1)
 
-while cv2.waitKey(33) < 0:
+kernel = np.zeros((5, 5), np.uint8)
+
+f = 0
+while True:
     ret, frame = capture.read()
-    text = reader.readtext(image=frame, detail=0)
-    if len(text) > 0:
-        frame = Image.fromarray(frame)
-        draw = ImageDraw.Draw(frame)
-        unicode_font = ImageFont.truetype("malgun.ttf", 20)
-        draw.text((10,10), ",".join(str(x) for x in text), font=unicode_font, fill=Color.GREEN.value)
-        frame = np.array(frame)
+    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    #ret, frame = cv2.threshold(frame, 150, 255, cv2.THRESH_BINARY)
+    #frame = cv2.dilate(frame, kernel, iterations=10)
+
+    #print(fr"포커스={capture.get(cv2.CAP_PROP_FOCUS)}")
     cv2.imshow("VideoFrame", frame)
+    #cv2.imwrite("ddd.jpg", frame)
+
+    key = cv2.waitKey(13)
+    if key >= 0:
+        text = reader.readtext(image=frame, detail=0)
+        if len(text) > 0:
+            frame = Image.fromarray(frame)
+            draw = ImageDraw.Draw(frame)
+            unicode_font = ImageFont.truetype("malgun.ttf", 10)
+            #draw.text((10,10), ",".join(str(x) for x in text), font=unicode_font, fill=Color.GREEN.value)
+            print(text)
+            frame = np.array(frame)
+
