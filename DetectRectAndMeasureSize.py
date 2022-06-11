@@ -65,8 +65,8 @@ def setCam(cap, w, h):
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, w)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, h)
     cap.set(cv2.CAP_PROP_FPS, 1)
-    cap.set(cv2.CAP_PROP_FOCUS, 70)
-    cap.set(cv2.CAP_PROP_AUTOFOCUS, 0)
+    cap.set(cv2.CAP_PROP_FOCUS, 8)
+    cap.set(cv2.CAP_PROP_AUTOFOCUS, 1)
 
     return cap
 
