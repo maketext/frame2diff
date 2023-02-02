@@ -34,6 +34,4 @@ checked = cv2.rectangle(checked, (x1, y1), (x2, y2), (0, 0, 255), 2)
 cv2.imshow("Matching result", checked)
 cv2.imwrite("res.png", checked)
 
-#res = res * 255
-
 cv2.waitKey(0)
