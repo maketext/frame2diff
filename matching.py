@@ -3,7 +3,6 @@ import cv2
 bg = cv2.imread('img/mold1.png', cv2.IMREAD_GRAYSCALE)
 bg = cv2.resize(bg, (100, 100))
 im = bg[0:33, 33:66]
-#cv2.imshow('dds', im);
 w, h = im.shape[:2]
 
 print(w, h)
