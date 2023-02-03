@@ -42,4 +42,4 @@ def boxing(im, count):
     return ims
 
 
-boxing('img/mold1.png', 8) # Split image 8 by 8
+boxing('img/mold1.png', 8)  # Split image 8 by 8
