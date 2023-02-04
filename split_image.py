@@ -30,15 +30,14 @@ def boxing(im, count):
             if x1 > count or x2 > count or y1 > count or y2 > count:
                 break
 
-    for i in range(0, count - 1):
-        forward(i, i, i + 1, i + 1)
+    forward(0, 0, 1, 1)
     for i in range(0, count - 1):
         x1, y1, x2, y2 = size[0] // unitSize - i - 1, 0, size[0] // unitSize - i, 1
         forward(x1, y1, x2, y2)
     for i in range(0, count - 1):
         x1, y1, x2, y2 = 0, size[1] // unitSize - i - 1, 1, size[1] // unitSize - i
         forward(x1, y1, x2, y2)
-    dst.show() # For validation by human eyes. Can be removed.
+    #dst.show() # For validation by human eyes. Can be removed.
     return ims
 
 
